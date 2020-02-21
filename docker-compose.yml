@@ -11,8 +11,7 @@ services:
     depends_on:
       - grocy
     ports:
-      - '80:80'
-      - '443:443'
+      - '127.0.0.1:9283:80'
     volumes_from:
       - grocy
     container_name: grocy-nginx
@@ -25,13 +24,13 @@ services:
     expose:
       - 9000
     volumes:
-      - database:/www
+      - db:/www
     environment:
       PHP_MEMORY_LIMIT:    512M
       MAX_UPLOAD:          50M
       PHP_MAX_FILE_UPLOAD: 200
       PHP_MAX_POST:        100M
-      GROCY_CULTURE: en
+      GROCY_CULTURE: de
     container_name: grocy
 volumes:
-  database:
+  db:
